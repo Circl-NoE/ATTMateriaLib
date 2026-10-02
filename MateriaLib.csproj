@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DistributionConfig.cs" />
     <Compile Include="LibMaterial.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="MaterialConfig.cs" />

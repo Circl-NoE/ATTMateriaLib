@@ -19,6 +19,7 @@ namespace MateriaLib
         public GameObject ingot = null;
         public int unlockAt = 0;
         public bool addToList = true;
+        public DistributionConfig distributionConfig = null;
         public LibMaterial(string name, int hash)
         {
             physicalMaterial = UnityEngine.Object.Instantiate(HashedGeneralValue<PhysicalMaterial>.Get((uint)MaterialType.metal));

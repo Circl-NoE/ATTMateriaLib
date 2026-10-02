@@ -1,5 +1,6 @@
 ﻿using Alta;
 using Alta.Blacksmithing;
+using Alta.Caves;
 using Alta.Inventory;
 using Alta.Networking;
 using MelonLoader;
@@ -7,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-[assembly: MelonInfo(typeof(MateriaLib.Main), "MateriaLib", "1.1.0", "Circl")]
+[assembly: MelonInfo(typeof(MateriaLib.Main), "MateriaLib", "1.2.0", "Circl")]
 
 namespace MateriaLib
 {
@@ -51,6 +52,23 @@ namespace MateriaLib
                         MelonLogger.Msg("There is a problem with a material");
                         MelonLogger.Msg($"{material.physicalMaterial.name} : {material.physicalMaterial.hash}");
                         MelonLogger.Error(ex);
+                    }
+                }
+                if (material.distributionConfig != null)
+                {
+                    try
+                    {
+                        Distribution.Item item = new Distribution.Item();
+                        item.topic = material.physicalMaterial;
+                        item.baseValue = material.distributionConfig.baseValue;
+                        item.noAttributeValue = material.distributionConfig.noAttributeValue;
+                        item.multipliers = material.distributionConfig.multipliers.ToArray();
+
+                        material.distributionConfig.distribution.items.Add(item);
+                    }
+                    catch
+                    {
+                        MelonLogger.Error($"Something went wrong when adding {material.physicalMaterial.name} to its distribution");
                     }
                 }
             }
