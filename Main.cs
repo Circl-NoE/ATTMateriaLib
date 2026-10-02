@@ -58,8 +58,8 @@ namespace MateriaLib
                 {
                     try
                     {
-                        Distribution.BaseItem item = new Distribution.BaseItem();
-                        item.Topic = material.physicalMaterial;
+                        Distribution.Item item = new Distribution.Item();
+                        item.topic = material.physicalMaterial;
                         item.baseValue = material.distributionConfig.baseValue;
                         item.noAttributeValue = material.distributionConfig.noAttributeValue;
                         item.multipliers = material.distributionConfig.multipliers.ToArray();
@@ -68,7 +68,7 @@ namespace MateriaLib
                     }
                     catch
                     {
-                        MelonLogger.Error($"Something went wrong when adding {material.physicalMaterial.name} to its distribution")
+                        MelonLogger.Error($"Something went wrong when adding {material.physicalMaterial.name} to its distribution");
                     }
                 }
             }
