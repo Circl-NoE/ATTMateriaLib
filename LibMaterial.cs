@@ -11,7 +11,8 @@ namespace MateriaLib
             metal = 1, //iron
             wood = 24722, //oak
             leather = 33384, //dais leather
-            canvas = 61790 //canvas
+            canvas = 61790, //canvas
+            rope = 35204 //rope
         }
         
         public PhysicalMaterial physicalMaterial { get; private set; }
@@ -104,23 +105,23 @@ namespace MateriaLib
                 physicalMaterial.hardnessLevel = config.HardnessLevel.Value;
 
         }
-        public void ReplaceAllMaterials(Material[] ingot, Material cauldron)
+        public void ReplaceAllMaterials(Material[] ingot, Material cauldron) // for metal
         {
             ReplaceMaterialsInChannel(0, ingot[0], ingot[1]);
             ReplaceMaterialsInChannel(1, cauldron);
         }
-        public void ReplaceAllMaterials(Material[] wood, Material charred, Material burnt, Material ashen)
+        public void ReplaceAllMaterials(Material[] wood, Material charred, Material burnt, Material ashen) // for wood
         {
             ReplaceMaterialsInChannel(0, wood[0], wood[1]);
             ReplaceMaterialsInChannel(1, charred);
             ReplaceMaterialsInChannel(1, burnt);
             ReplaceMaterialsInChannel(1, ashen);
         }
-        public void ReplaceAllMaterials(Material leather)
+        public void ReplaceAllMaterials(Material material) // for leather or rope
         {
-            ReplaceMaterialsInChannel(0, leather);
+            ReplaceMaterialsInChannel(0, material);
         }
-        public void ReplaceAllMaterials(Material worn, Material cutout)
+        public void ReplaceAllMaterials(Material worn, Material cutout) // for canvas
         {
             ReplaceMaterialsInChannel(0, worn);
             ReplaceMaterialsInChannel(1, cutout);
