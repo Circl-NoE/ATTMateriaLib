@@ -35,9 +35,9 @@ namespace MateriaLib
         }
         public override void OnLateInitializeMelon()
         {
-            PreSetupMaterial?.Invoke();
-            SetupMaterial?.Invoke();
-            PostSetupMaterial?.Invoke();
+            InvokeEach(PreSetupMaterial, nameof(PreSetupMaterial));
+            InvokeEach(SetupMaterial, nameof(SetupMaterial));
+            InvokeEach(PostSetupMaterial, nameof(PostSetupMaterial));
 
             foreach (LibMaterial material in LibMaterial.NewMaterials)
             {
@@ -114,7 +114,26 @@ namespace MateriaLib
             gem2.physicalMaterials = ListGem2.ToArray();
             gem3.physicalMaterials = ListGem3.ToArray();
 
-            PostSetupIngots?.Invoke();
+            InvokeEach(PostSetupIngots, nameof(PostSetupIngots));
+        }
+
+        private static void InvokeEach(Action action, string eventName)
+        {
+            if (action == null)
+                return;
+
+            foreach (Action subscriber in action.GetInvocationList())
+            {
+                try
+                {
+                    subscriber();
+                }
+                catch (Exception ex)
+                {
+                    MelonLogger.Error($"{eventName} subscriber {subscriber.Method.DeclaringType?.FullName}.{subscriber.Method.Name} from {subscriber.Method.DeclaringType?.Assembly.GetName().Name} failed, continuing with the others");
+                    MelonLogger.Error(ex);
+                }
+            }
         }
     }
 }
