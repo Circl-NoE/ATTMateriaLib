@@ -60,6 +60,7 @@
     <Compile Include="DistributionConfig.cs" />
     <Compile Include="LibMaterial.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="MaterialDurability.cs" />
     <Compile Include="MaterialConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

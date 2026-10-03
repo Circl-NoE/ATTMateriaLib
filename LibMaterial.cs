@@ -19,6 +19,7 @@ namespace MateriaLib
         public GameObject ingot = null;
         public int unlockAt = 0;
         public bool addToList = true;
+        public bool useDurabilityMultiplier = false;
         public DistributionConfig distributionConfig = null;
         public LibMaterial(string name, int hash)
         {
