@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-[assembly: MelonInfo(typeof(MateriaLib.Main), "MateriaLib", "1.3.0", "Circl")]
+[assembly: MelonInfo(typeof(MateriaLib.Main), "MateriaLib", "1.4.0", "Circl")]
 
 namespace MateriaLib
 {
@@ -27,6 +27,8 @@ namespace MateriaLib
 
         public override void OnInitializeMelon()
         {
+            DistributionConfig.GetAttributes();
+
             defaultUp = HashedGeneralValue<SmelterUpgrades>.Get(35404u);
             simpleServer = HashedGeneralValue<SmelterUpgrades>.Get(5674u);
             gem1 = HashedGeneralValue<SmelterUpgrades>.Get(23872u);

@@ -2,6 +2,7 @@
 using Alta.Caves;
 using MelonLoader;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace MateriaLib
 {
@@ -31,6 +32,13 @@ namespace MateriaLib
             distribution = ThisDistribution;
             baseValue = BaseValue;
             noAttributeValue = NoAttributeValue;
+        }
+
+        public static BiomeAttribute[] biomeAttributes;
+
+        internal static void GetAttributes()
+        {
+            biomeAttributes = (BiomeAttribute[])Resources.FindObjectsOfTypeAll(typeof(BiomeAttribute));
         }
     }
 }
