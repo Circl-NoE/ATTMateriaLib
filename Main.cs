@@ -25,6 +25,8 @@ namespace MateriaLib
         public static SmelterUpgrades gem2 { get; private set; }
         public static SmelterUpgrades gem3 { get; private set; }
 
+        public static MelonPreferences_Entry<bool> vanillaDurability { get; private set; }
+
         public override void OnInitializeMelon()
         {
             defaultUp = HashedGeneralValue<SmelterUpgrades>.Get(35404u);
@@ -32,6 +34,9 @@ namespace MateriaLib
             gem1 = HashedGeneralValue<SmelterUpgrades>.Get(23872u);
             gem2 = HashedGeneralValue<SmelterUpgrades>.Get(28650u);
             gem3 = HashedGeneralValue<SmelterUpgrades>.Get(33428u);
+
+            MelonPreferences_Category settings = MelonPreferences.CreateCategory("MateriaLib");
+            vanillaDurability = settings.CreateEntry("VanillaDurability", false, description: "Make the base game's metals and wood use their durability multiplier");
         }
         public override void OnLateInitializeMelon()
         {

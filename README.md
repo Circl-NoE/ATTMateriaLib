@@ -22,8 +22,25 @@ A part made from My Metal then has twice the durability of the same part made fr
 
 - A material made from a template keeps the template's multiplier unless you set DurabilityMultiplier yourself.
 - Existing wear is kept when the multiplier is applied, and the bonus is kept after a server restart.
-- Vanilla materials and materials with the option off work exactly as in the base game.
+- Vanilla materials work exactly as in the base game unless the server turns on `VanillaDurability` (below).
 - Durability is worked out on the server, so the server must run a MateriaLib version that has this option.
+
+### Vanilla metals and woods
+The base game gives its own metals and woods durability multipliers too (Gold 0.5, Mythril 3, Carsi 5 and so on), and they do nothing either. A server can turn them on in `UserData/MelonPreferences.cfg`:
+```
+[MateiraLib]
+VanillaDurability = true
+```
+This covers every vanilla metal and wood. Leather, canvas and rope are all 1 in the game, so they stay the same.
+
+To turn it on for one existing material from your own mod, wrap it in a LibMaterial without registering it again:
+```
+PhysicalMaterial viridium = HashedGeneralValue<PhysicalMaterial>.Get(16222u);
+LibMaterial wrapped = new LibMaterial(viridium);
+wrapped.addToList = false;
+wrapped.useDurabilityMultiplier = true;
+LibMaterial.NewMaterials.Add(wrapped);
+```
 
 ## Settings that do nothing
 In the current game build (main-1.7.2.1) the game never reads `MeltingPoint` or `InternalThermalConductivity`, so setting them in MaterialConfig has no effect.
