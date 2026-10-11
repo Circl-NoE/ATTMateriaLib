@@ -39,6 +39,15 @@ namespace MateriaLib
             InvokeEach(SetupMaterial, nameof(SetupMaterial));
             InvokeEach(PostSetupMaterial, nameof(PostSetupMaterial));
 
+            MouldDefinition mould = HashedGeneralValue<MouldDefinition>.Get(22952);
+            ItemSet ingots = mould.allowedMaterials;
+
+            List<PhysicalMaterial> ListDef = defaultUp.physicalMaterials.ToList();
+            List<PhysicalMaterial> ListSimp = simpleServer.physicalMaterials.ToList();
+            List<PhysicalMaterial> ListGem1 = gem1.physicalMaterials.ToList();
+            List<PhysicalMaterial> ListGem2 = gem2.physicalMaterials.ToList();
+            List<PhysicalMaterial> ListGem3 = gem3.physicalMaterials.ToList();
+
             foreach (LibMaterial material in LibMaterial.NewMaterials)
             {
                 if (material.addToList)
@@ -71,37 +80,33 @@ namespace MateriaLib
                         MelonLogger.Error($"Something went wrong when adding {material.physicalMaterial.name} to its distribution");
                     }
                 }
-            }
-
-            MouldDefinition mould = HashedGeneralValue<MouldDefinition>.Get(22952);
-            ItemSet ingots = mould.allowedMaterials;
-
-            List<PhysicalMaterial> ListDef = defaultUp.physicalMaterials.ToList();
-            List <PhysicalMaterial> ListSimp = simpleServer.physicalMaterials.ToList();
-            List <PhysicalMaterial> ListGem1 = gem1.physicalMaterials.ToList();
-            List <PhysicalMaterial> ListGem2 = gem2.physicalMaterials.ToList();
-            List <PhysicalMaterial> ListGem3 = gem3.physicalMaterials.ToList();
-
-            foreach (LibMaterial material in LibMaterial.NewMaterials)
-            {
                 if (material.ingot != null)
                 {
                     ingots.items.Add(material.ingot.GetComponent<Pickup>().item);
 
-                    switch (material.unlockAt)
+                    if (material.upgradeToUnlock == null)
                     {
-                        default:
-                            ListDef.Add(material.physicalMaterial);
-                            break;
-                        case 1:
-                            ListGem1.Add(material.physicalMaterial);
-                            break;
-                        case 2:
-                            ListGem2.Add(material.physicalMaterial);
-                            break;
-                        case 3:
-                            ListGem3.Add(material.physicalMaterial);
-                            break;
+                        switch (material.unlockAt)
+                        {
+                            default:
+                                ListDef.Add(material.physicalMaterial);
+                                break;
+                            case 1:
+                                ListGem1.Add(material.physicalMaterial);
+                                break;
+                            case 2:
+                                ListGem2.Add(material.physicalMaterial);
+                                break;
+                            case 3:
+                                ListGem3.Add(material.physicalMaterial);
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        List<PhysicalMaterial> templist = material.upgradeToUnlock.physicalMaterials.ToList();
+                        templist.Add(material.physicalMaterial);
+                        material.upgradeToUnlock.physicalMaterials = templist.ToArray();
                     }
 
                     ListSimp.Add(material.physicalMaterial);
