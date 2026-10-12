@@ -1,4 +1,5 @@
 ﻿using Alta;
+using Alta.Blacksmithing;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ namespace MateriaLib
         public PhysicalMaterial physicalMaterial { get; private set; }
         public GameObject ingot = null;
         public int unlockAt = 0;
+        public SmelterUpgrades upgradeToUnlock = null;
         public bool addToList = true;
         public bool useDurabilityMultiplier = false;
         public DistributionConfig distributionConfig = null;
