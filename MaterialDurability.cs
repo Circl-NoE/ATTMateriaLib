@@ -13,7 +13,7 @@ namespace MateriaLib
         {
             20178, 11420, 24094, 20186, 55232, 31502, 56394, 1, 31174, 31468, 28618, 54964, 16222, 24028, // metals
             19966, 37260, 24722, 10962, 15500 // woods
-        }
+        };
 
         public static float GetMultiplier(PhysicalMaterial physicalMaterial)
         {
