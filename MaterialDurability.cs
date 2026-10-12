@@ -9,6 +9,12 @@ namespace MateriaLib
         private static readonly HashSet<DurabilityModule> scaledModules = new HashSet<DurabilityModule>();
         private static int pruneAt = 1024;
 
+        public static readonly HashSet<uint> vanillaMaterials = new HashSet<uint>
+        {
+            20178, 11420, 24094, 20186, 55232, 31502, 56394, 1, 31174, 31468, 28618, 54964, 16222, 24028, // metals
+            19966, 37260, 24722, 10962, 15500 // woods
+        }
+
         public static float GetMultiplier(PhysicalMaterial physicalMaterial)
         {
             if (physicalMaterial == null)
@@ -19,6 +25,8 @@ namespace MateriaLib
                 if (material.useDurabilityMultiplier && material.physicalMaterial == physicalMaterial && physicalMaterial.DurabilityMultiplier > 0f)
                     return physicalMaterial.DurabilityMultiplier;
             }
+            if (Main.vanillaDurability != null && Main.vanillaDurability.Value && vanillaMaterials.Contains(physicalMaterial.Hash) && physicalMaterial.DurabilityMultiplier > 0f)
+                return physicalMaterial.DurabilityMultiplier;
             return 1f;
         }
 
