@@ -1,5 +1,6 @@
-﻿using Alta;
-using Alta.Blacksmithing;
+﻿using Il2Cpp;
+using Il2CppAlta;
+using Il2CppAlta.Blacksmithing;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -136,9 +137,9 @@ namespace MateriaLib
         }
         public void ReplaceMaterialsInChannel(int channel, Material visMaterial, Material visMaterial2)
         {
-            physicalMaterial.materialChannels[channel].material = visMaterial;
-            physicalMaterial.materialChannels[channel].atlasedMaterial = visMaterial2;
-            physicalMaterial.materialChannels[channel].nonDeformingMaterial = visMaterial2;
+            physicalMaterial.androidMaterialChannels[channel].material = visMaterial;
+            physicalMaterial.androidMaterialChannels[channel].atlasedMaterial = visMaterial2;
+            physicalMaterial.androidMaterialChannels[channel].nonDeformingMaterial = visMaterial2;
         }
 
         public Material GetMaterialFromChannelSpot(int channel, int spot)
@@ -146,11 +147,11 @@ namespace MateriaLib
             switch (spot)
             {
                 default:
-                    return physicalMaterial.materialChannels[channel].material;
+                    return physicalMaterial.androidMaterialChannels[channel].material;
                 case 2:
-                    return physicalMaterial.materialChannels[channel].atlasedMaterial;
+                    return physicalMaterial.androidMaterialChannels[channel].atlasedMaterial;
                 case 3:
-                    return physicalMaterial.materialChannels[channel].nonDeformingMaterial;
+                    return physicalMaterial.androidMaterialChannels[channel].nonDeformingMaterial;
             }
         }
 

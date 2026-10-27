@@ -1,4 +1,5 @@
-﻿using Alta.Networking;
+﻿using Il2Cpp;
+using Il2CppAlta.Networking;
 using HarmonyLib;
 using System.Collections.Generic;
 

@@ -1,14 +1,14 @@
-﻿using Alta;
-using Alta.Blacksmithing;
-using Alta.Caves;
-using Alta.Inventory;
-using Alta.Networking;
+﻿using Il2CppAlta;
+using Il2CppAlta.Blacksmithing;
+using Il2CppAlta.Caves;
+using Il2CppAlta.Inventory;
+using Il2CppAlta.Networking;
 using MelonLoader;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-[assembly: MelonInfo(typeof(MateriaLib.Main), "MateriaLib", "1.4.0", "Circl")]
+[assembly: MelonInfo(typeof(MateriaLib.Main), "MateriaLib", "Q1.4.0", "Circl")]
 
 namespace MateriaLib
 {
@@ -46,14 +46,14 @@ namespace MateriaLib
             InvokeEach(SetupMaterial, nameof(SetupMaterial));
             InvokeEach(PostSetupMaterial, nameof(PostSetupMaterial));
 
-            MouldDefinition mould = HashedGeneralValue<MouldDefinition>.Get(22952);
+            Il2Cpp.MouldDefinition mould = HashedGeneralValue<Il2Cpp.MouldDefinition>.Get(22952);
             ItemSet ingots = mould.allowedMaterials;
 
-            List<PhysicalMaterial> ListDef = defaultUp.physicalMaterials.ToList();
-            List<PhysicalMaterial> ListSimp = simpleServer.physicalMaterials.ToList();
-            List<PhysicalMaterial> ListGem1 = gem1.physicalMaterials.ToList();
-            List<PhysicalMaterial> ListGem2 = gem2.physicalMaterials.ToList();
-            List<PhysicalMaterial> ListGem3 = gem3.physicalMaterials.ToList();
+            List<Il2Cpp.PhysicalMaterial> ListDef = defaultUp.physicalMaterials.ToList();
+            List<Il2Cpp.PhysicalMaterial> ListSimp = simpleServer.physicalMaterials.ToList();
+            List<Il2Cpp.PhysicalMaterial> ListGem1 = gem1.physicalMaterials.ToList();
+            List<Il2Cpp.PhysicalMaterial> ListGem2 = gem2.physicalMaterials.ToList();
+            List<Il2Cpp.PhysicalMaterial> ListGem3 = gem3.physicalMaterials.ToList();
 
             foreach (LibMaterial material in LibMaterial.NewMaterials)
             {
@@ -61,7 +61,7 @@ namespace MateriaLib
                 {
                     try
                     {
-                        HashedGeneralValue<PhysicalMaterial>.items.Add((uint)material.physicalMaterial.hash, material.physicalMaterial);
+                        HashedGeneralValue<Il2Cpp.PhysicalMaterial>.items.Add((uint)material.physicalMaterial.hash, material.physicalMaterial);
                     }
                     catch (Exception ex)
                     {
@@ -89,7 +89,7 @@ namespace MateriaLib
                 }
                 if (material.ingot != null)
                 {
-                    ingots.items.Add(material.ingot.GetComponent<Pickup>().item);
+                    ingots.items.Add(material.ingot.GetComponent<Il2Cpp.Pickup>().item);
 
                     if (material.upgradeToUnlock == null)
                     {
@@ -111,7 +111,7 @@ namespace MateriaLib
                     }
                     else
                     {
-                        List<PhysicalMaterial> templist = material.upgradeToUnlock.physicalMaterials.ToList();
+                        List<Il2Cpp.PhysicalMaterial> templist = material.upgradeToUnlock.physicalMaterials.ToList();
                         templist.Add(material.physicalMaterial);
                         material.upgradeToUnlock.physicalMaterials = templist.ToArray();
                     }

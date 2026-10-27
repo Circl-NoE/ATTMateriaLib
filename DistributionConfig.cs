@@ -1,5 +1,6 @@
-﻿using Alta;
-using Alta.Caves;
+﻿using Il2Cpp;
+using Il2CppAlta;
+using Il2CppAlta.Caves;
 using MelonLoader;
 using System.Collections.Generic;
 using UnityEngine;
