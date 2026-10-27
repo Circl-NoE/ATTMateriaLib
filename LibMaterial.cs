@@ -22,7 +22,7 @@ namespace MateriaLib
         public int unlockAt = 0;
         public SmelterUpgrades upgradeToUnlock = null;
         public bool addToList = true;
-        public bool useDurabilityMultiplier = false;
+        //public bool useDurabilityMultiplier = false;
         public DistributionConfig distributionConfig = null;
         public LibMaterial(string name, int hash)
         {

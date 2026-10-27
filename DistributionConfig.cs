@@ -39,7 +39,8 @@ namespace MateriaLib
 
         internal static void GetAttributes()
         {
-            biomeAttributes = (BiomeAttribute[])Resources.FindObjectsOfTypeAll(typeof(BiomeAttribute));
+            MelonLogger.Msg("Attempting to get attributes");
+            biomeAttributes = (BiomeAttribute[])Resources.FindObjectsOfTypeAll<BiomeAttribute>();
         }
     }
 }

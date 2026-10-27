@@ -63,14 +63,13 @@
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\alta\A Township Talemod\A Township Tale_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\dependancies\questmods\questdlls\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DistributionConfig.cs" />
     <Compile Include="LibMaterial.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="MaterialDurability.cs" />
     <Compile Include="MaterialConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

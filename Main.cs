@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-[assembly: MelonInfo(typeof(MateriaLib.Main), "MateriaLib", "Q1.4.0", "Circl")]
+[assembly: MelonInfo(typeof(MateriaLib.Main), "MateriaLib", "1.4.0-Q", "Circl")]
 
 namespace MateriaLib
 {
@@ -25,20 +25,23 @@ namespace MateriaLib
         public static SmelterUpgrades gem2 { get; private set; }
         public static SmelterUpgrades gem3 { get; private set; }
 
-        public static MelonPreferences_Entry<bool> vanillaDurability { get; private set; }
+        //public static MelonPreferences_Entry<bool> vanillaDurability { get; private set; }
 
         public override void OnInitializeMelon()
         {
+            MelonLogger.Msg("Starting load");
             DistributionConfig.GetAttributes();
-
+            MelonLogger.Msg("Got distribution attributes");
             defaultUp = HashedGeneralValue<SmelterUpgrades>.Get(35404u);
             simpleServer = HashedGeneralValue<SmelterUpgrades>.Get(5674u);
             gem1 = HashedGeneralValue<SmelterUpgrades>.Get(23872u);
             gem2 = HashedGeneralValue<SmelterUpgrades>.Get(28650u);
             gem3 = HashedGeneralValue<SmelterUpgrades>.Get(33428u);
 
-            MelonPreferences_Category settings = MelonPreferences.CreateCategory("MateriaLib");
-            vanillaDurability = settings.CreateEntry("VanillaDurability", false, description: "Make the base game's metals and wood use their durability multiplier");
+            MelonLogger.Msg("Loaded");
+
+            //MelonPreferences_Category settings = MelonPreferences.CreateCategory("MateriaLib");
+            //vanillaDurability = settings.CreateEntry("VanillaDurability", false, description: "Make the base game's metals and wood use their durability multiplier");
         }
         public override void OnLateInitializeMelon()
         {
@@ -78,7 +81,7 @@ namespace MateriaLib
                         item.topic = material.physicalMaterial;
                         item.baseValue = material.distributionConfig.baseValue;
                         item.noAttributeValue = material.distributionConfig.noAttributeValue;
-                        item.multipliers = material.distributionConfig.multipliers.ToArray();
+                        item.multipliers = (Il2CppInterop.Runtime.InteropTypes.Arrays.Il2CppReferenceArray<Il2Cpp.AttributeCurveRange>)material.distributionConfig.multipliers.ToArray();
 
                         material.distributionConfig.distribution.items.Add(item);
                     }
