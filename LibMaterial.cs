@@ -25,7 +25,7 @@ namespace MateriaLib
         public DistributionConfig distributionConfig = null;
         public LibMaterial(string name, int hash)
         {
-            physicalMaterial = UnityEngine.Object.Instantiate(HashedGeneralValue<PhysicalMaterial>.Get((uint)MaterialType.metal));
+            physicalMaterial = UnityEngine.Object.Instantiate(HashedGeneralValue<PhysicalMaterial>.Get((uint)MaterialType.leather));
             physicalMaterial.name = name;
             physicalMaterial.hash = hash;
         }
