@@ -38,7 +38,7 @@ namespace MateriaLib
         }
         public LibMaterial(string name, int hash, PhysicalMaterial physMat)
         {
-            physicalMaterial = physMat;
+            physicalMaterial = UnityEngine.Object.Instantiate(physMat);
             physicalMaterial.name = name;
             physicalMaterial.hash = hash;
         }

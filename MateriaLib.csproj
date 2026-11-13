@@ -36,13 +36,13 @@
       <HintPath>..\..\..\..\alta\A Township Talemod\MelonLoader\net6\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Alta.Values-lobotomized">
-      <HintPath>..\Generated\Alta.Values-lobotomized.dll</HintPath>
+      <HintPath>..\dependancies\Alta.Values-lobotomized.dll</HintPath>
     </Reference>
     <Reference Include="MelonLoader">
       <HintPath>..\..\..\..\alta\A Township Talemod\MelonLoader\net6\MelonLoader.dll</HintPath>
     </Reference>
     <Reference Include="Root.Township-publicized">
-      <HintPath>..\Generated\Root.Township-publicized.dll</HintPath>
+      <HintPath>..\dependancies\Root.Township-publicized.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
