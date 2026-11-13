@@ -26,7 +26,7 @@ namespace MateriaLib
         public DistributionConfig distributionConfig = null;
         public LibMaterial(string name, int hash)
         {
-            physicalMaterial = UnityEngine.Object.Instantiate(HashedGeneralValue<PhysicalMaterial>.Get((uint)MaterialType.metal));
+            physicalMaterial = UnityEngine.Object.Instantiate(HashedGeneralValue<PhysicalMaterial>.Get((uint)MaterialType.leather));
             physicalMaterial.name = name;
             physicalMaterial.hash = hash;
         }
@@ -39,7 +39,7 @@ namespace MateriaLib
         }
         public LibMaterial(string name, int hash, PhysicalMaterial physMat)
         {
-            physicalMaterial = physMat;
+            physicalMaterial = UnityEngine.Object.Instantiate(physMat);
             physicalMaterial.name = name;
             physicalMaterial.hash = hash;
         }

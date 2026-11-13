@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-[assembly: MelonInfo(typeof(MateriaLib.Main), "MateriaLib", "1.4.0-Q", "Circl")]
+[assembly: MelonInfo(typeof(MateriaLib.Main), "MateriaLib", "1.4.1-Q", "Circl")]
 
 namespace MateriaLib
 {
