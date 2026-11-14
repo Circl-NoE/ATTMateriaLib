@@ -28,6 +28,7 @@ namespace MateriaLib
             physicalMaterial = UnityEngine.Object.Instantiate(HashedGeneralValue<PhysicalMaterial>.Get((uint)MaterialType.leather));
             physicalMaterial.name = name;
             physicalMaterial.hash = hash;
+            physicalMaterial.sourceMaterialHash = 0;
         }
         public LibMaterial(string name, int hash, MaterialType matType)
         {
@@ -35,12 +36,14 @@ namespace MateriaLib
             physicalMaterial = UnityEngine.Object.Instantiate(HashedGeneralValue<PhysicalMaterial>.Get(basehash));
             physicalMaterial.name = name;
             physicalMaterial.hash = hash;
+            physicalMaterial.sourceMaterialHash = 0;
         }
         public LibMaterial(string name, int hash, PhysicalMaterial physMat)
         {
             physicalMaterial = UnityEngine.Object.Instantiate(physMat);
             physicalMaterial.name = name;
             physicalMaterial.hash = hash;
+            physicalMaterial.sourceMaterialHash = 0;
         }
         public LibMaterial(PhysicalMaterial physMat)
         {
@@ -152,6 +155,11 @@ namespace MateriaLib
                 case 3:
                     return physicalMaterial.materialChannels[channel].nonDeformingMaterial;
             }
+        }
+
+        public void SetSourceMaterialHash(uint hash)
+        {
+            physicalMaterial.sourceMaterialHash = hash;
         }
 
         public static readonly List<LibMaterial> NewMaterials = new List<LibMaterial>();

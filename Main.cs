@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-[assembly: MelonInfo(typeof(MateriaLib.Main), "MateriaLib", "1.4.1", "Circl")]
+[assembly: MelonInfo(typeof(MateriaLib.Main), "MateriaLib", "1.5.0", "Circl")]
 
 namespace MateriaLib
 {
@@ -90,6 +90,8 @@ namespace MateriaLib
                 if (material.ingot != null)
                 {
                     ingots.items.Add(material.ingot.GetComponent<Pickup>().item);
+
+                    material.physicalMaterial.sourceMaterialHash = (uint)material.ingot.GetComponent<NetworkPrefab>().hash;
 
                     if (material.upgradeToUnlock == null)
                     {
