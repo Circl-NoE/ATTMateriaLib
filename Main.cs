@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 [assembly: MelonInfo(typeof(MateriaLib.Main), "MateriaLib", "1.5.0", "Circl")]
+[assembly: MelonPriority(-90)]
 
 namespace MateriaLib
 {
